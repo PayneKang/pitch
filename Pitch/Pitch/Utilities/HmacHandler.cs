@@ -9,7 +9,7 @@ using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 using Windows.Storage.Streams;
 
-namespace TentLib
+namespace Pitch
 {
 	public class HmacHandler : MessageProcessingHandler
 	{

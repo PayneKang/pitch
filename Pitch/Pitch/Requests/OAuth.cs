@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TentLib.Models.V0_1_0;
+using Pitch.Models.V0_1_0;
 
-namespace TentLib.Requests
+namespace Pitch.Requests
 {
     public static class OAuth
     {

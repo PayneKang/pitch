@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using TentLib.Models;
+using Pitch.Models;
 
-namespace TentLib.Requests
+namespace Pitch.Requests
 {
 	public static class ProfileRequest
 	{

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentLib.Models
+namespace Pitch.Models
 {
 	public class Profile
 	{
@@ -46,8 +46,8 @@ namespace TentLib.Models
 		//	try
 		//	{
 		//		JObject root = JObject.Parse(content);
-		//		profile.BasicInfo_v0_1_0 = new TentLib.Models.V0_1_0.BasicProfileInfo((JObject)root[InfoTypes.TYPE_BASIC_V0_1_0]);
-		//		profile.CoreInfo_v0_1_0 = new TentLib.Models.V0_1_0.CoreProfileInfo((JObject)root[InfoTypes.TYPE_CORE_V0_1_0]);
+		//		profile.BasicInfo_v0_1_0 = new Pitch.Models.V0_1_0.BasicProfileInfo((JObject)root[InfoTypes.TYPE_BASIC_V0_1_0]);
+		//		profile.CoreInfo_v0_1_0 = new Pitch.Models.V0_1_0.CoreProfileInfo((JObject)root[InfoTypes.TYPE_CORE_V0_1_0]);
 		//	}
 		//	catch
 		//	{
@@ -66,9 +66,9 @@ namespace TentLib.Models
 		//}
 
 		[JsonProperty(PropertyName = InfoTypes.TYPE_BASIC_V0_1_0)]
-		public TentLib.Models.V0_1_0.BasicProfileInfo BasicInfo_v0_1_0 { get; set; }
+		public Pitch.Models.V0_1_0.BasicProfileInfo BasicInfo_v0_1_0 { get; set; }
 
 		[JsonProperty(PropertyName = InfoTypes.TYPE_CORE_V0_1_0)]
-		public TentLib.Models.V0_1_0.CoreProfileInfo CoreInfo_v0_1_0 { get; set; }
+		public Pitch.Models.V0_1_0.CoreProfileInfo CoreInfo_v0_1_0 { get; set; }
 	}
 }

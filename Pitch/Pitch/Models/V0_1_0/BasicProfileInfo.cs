@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentLib.Models.V0_1_0
+namespace Pitch.Models.V0_1_0
 {
 	public class BasicProfileInfo
 	{

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentLib
+namespace Pitch
 {
     public static class InfoTypes
     {

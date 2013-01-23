@@ -8,17 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 
-namespace TentLib.Requests
+namespace Pitch.Requests
 {
     public static class AccessTokenRequest
     {
-        public static async Task<TentLib.Models.V0_1_0.AccessTokenResponseModel>
-    RegisterNewAppAsync(string serverUri, string id, string hashKey, TentLib.Models.V0_1_0.AccessTokenRequestModel request)
+        public static async Task<Pitch.Models.V0_1_0.AccessTokenResponseModel>
+    RegisterNewAppAsync(string serverUri, string id, string hashKey, Pitch.Models.V0_1_0.AccessTokenRequestModel request)
         {
             if (serverUri == null) throw new ArgumentNullException("serverUri");
             if (request == null) throw new ArgumentNullException("request");
 
-            TentLib.Models.V0_1_0.AccessTokenResponseModel ret = null;
+            Pitch.Models.V0_1_0.AccessTokenResponseModel ret = null;
             Exception err = null;
             try
             {
@@ -43,7 +43,7 @@ namespace TentLib.Requests
                     var responseString = await response.Content.ReadAsStringAsync();
                     Debug.WriteLine("app_registration: " + responseString);
 
-                    ret = JsonConvert.DeserializeObject<TentLib.Models.V0_1_0.AccessTokenResponseModel>(responseString);
+                    ret = JsonConvert.DeserializeObject<Pitch.Models.V0_1_0.AccessTokenResponseModel>(responseString);
                     ret.OriginalResponse = JsonConvert.SerializeObject(ret, Formatting.Indented);
                 }
             }

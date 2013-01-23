@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 
-namespace TentLib
+namespace Pitch
 {
 	public static class HmacUtils
 	{
