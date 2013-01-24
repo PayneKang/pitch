@@ -22,6 +22,7 @@ namespace Pitch
 			norm.Append(pathAndQuery.ToLowerInvariant()); norm.Append('\n');
 			norm.Append(host.ToLowerInvariant()); norm.Append('\n');
 			norm.Append(port.ToString(CultureInfo.InvariantCulture)); norm.Append('\n');
+			norm.Append('\n');
 			return norm.ToString();
 		}
 
@@ -71,13 +72,16 @@ namespace Pitch
 
 		public static int GetTsFromDateTime(DateTime dateTime)
 		{
-			return ((int)(dateTime.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds);
+			TimeSpan t = (dateTime - new DateTime(1970, 1, 1));
+			int ts = ((int)t.TotalSeconds);
+			return ts;
 		}
 
 		public static string GetTs()
 		{
-			return GetTsFromDateTime(DateTime.UtcNow)
-					.ToString(CultureInfo.InvariantCulture);
+			TimeSpan t = (DateTime.UtcNow - new DateTime(1970, 1, 1));
+			string ts = ((int)t.TotalSeconds).ToString(CultureInfo.InvariantCulture);
+			return ts;
 		}
 
 	}

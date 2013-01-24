@@ -4,21 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C479131-F938-470F-AB33-2AEB0422130F}</ProjectGuid>
-    <OutputType>AppContainerExe</OutputType>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9CF604A7-3C91-47F1-AC33-EBEFEBB3AB50}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SampleApp</RootNamespace>
-    <AssemblyName>SampleApp</AssemblyName>
+    <RootNamespace>PitchUnitTests</RootNamespace>
+    <AssemblyName>PitchUnitTests</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>SampleApp_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <PackageCertificateThumbprint>11FD42BCE272356B187CE9334340306753E14C50</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>PitchUnitTests_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -28,7 +26,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -102,94 +99,38 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <AppXPackage>True</AppXPackage>
+    <AppxPackageIncludePrivateSymbols>true</AppxPackageIncludePrivateSymbols>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectTemplateViews\GroupedItemsPage.xaml.cs">
-      <DependentUpon>GroupedItemsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectTemplateViews\GroupDetailPage.xaml.cs">
-      <DependentUpon>GroupDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectTemplateViews\ItemDetailPage.xaml.cs">
-      <DependentUpon>ItemDetailPage.xaml</DependentUpon>
-    </Compile>
+    <!--A reference to the entire .Net Framework and Windows SDK are automatically included-->
+    <SDKReference Include="MSTestFramework, Version=11.0" />
+    <SDKReference Include="TestPlatform, Version=11.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HmacUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataModel\SampleDataSource.cs" />
-    <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Common\BooleanNegationConverter.cs" />
-    <Compile Include="Common\LayoutAwarePage.cs" />
-    <Compile Include="Common\RichTextColumns.cs" />
-    <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="ViewModels\HMacTestViewModel.cs" />
-    <Compile Include="ViewModels\TestPageViewModel.cs" />
-    <Compile Include="Views\HmacTestPage.xaml.cs">
-      <DependentUpon>HmacTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MenuPage.xaml.cs">
-      <DependentUpon>MenuPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TestPage.xaml.cs">
-      <DependentUpon>TestPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Common\ReadMe.txt" />
-    <None Include="packages.config" />
-    <None Include="SampleApp_TemporaryKey.pfx" />
+    <None Include="PitchUnitTests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\SmallLogo.png" />
-    <Content Include="Assets\SplashScreen.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\LightGray.png" />
-    <Content Include="Assets\MediumGray.png" />
-    <Content Include="Assets\DarkGray.png" />
-    <Page Include="Views\MenuPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\HmacTestPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\TestPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="Common\StandardStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ProjectTemplateViews\GroupedItemsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ProjectTemplateViews\GroupDetailPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ProjectTemplateViews\ItemDetailPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\winrt45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Content Include="Images\UnitTestLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UnitTestSmallLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UnitTestSplashScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UnitTestStoreLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pitch\Pitch.csproj">
@@ -201,11 +142,10 @@
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>
+  </Target>  
   <Target Name="AfterBuild">
   </Target>
   -->
