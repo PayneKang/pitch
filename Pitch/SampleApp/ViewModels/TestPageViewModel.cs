@@ -149,9 +149,10 @@ namespace SampleApp.ViewModels
 
 		public async Task DoAccessTokenRequest()
 		{
-			var response = await AccessTokenRequest.RegisterNewAppAsync(
+			var response = await AccessTokenRequest.RequestAccessToken(
 					Server,
 					AppRegistrationResponse.Id,
+					AppRegistrationResponse.MacKeyId,
 					AppRegistrationResponse.MacKey,
 					new AccessTokenRequestModel(OAuthCode));
 			AccessTokenResponse = response.OriginalResponse;

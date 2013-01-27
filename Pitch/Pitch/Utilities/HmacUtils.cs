@@ -19,7 +19,7 @@ namespace Pitch
 			norm.Append(ts); norm.Append('\n');
 			norm.Append(nonce); norm.Append('\n');
 			norm.Append(method.ToUpperInvariant()); norm.Append('\n');
-			norm.Append(pathAndQuery.ToLowerInvariant()); norm.Append('\n');
+			norm.Append(pathAndQuery); norm.Append('\n');
 			norm.Append(host.ToLowerInvariant()); norm.Append('\n');
 			norm.Append(port.ToString(CultureInfo.InvariantCulture)); norm.Append('\n');
 			norm.Append('\n');

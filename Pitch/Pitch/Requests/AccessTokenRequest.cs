@@ -13,27 +13,27 @@ namespace Pitch.Requests
 	public static class AccessTokenRequest
 	{
 		public static async Task<Pitch.Models.V0_1_0.AccessTokenResponseModel>
-			RegisterNewAppAsync(string serverUri, string id, string hashKey, Pitch.Models.V0_1_0.AccessTokenRequestModel request)
+			RequestAccessToken(string serverUri, string appId, string macKeyId, string hashKey, Pitch.Models.V0_1_0.AccessTokenRequestModel request)
 		{
 			if (serverUri == null) throw new ArgumentNullException("serverUri");
 			if (request == null) throw new ArgumentNullException("request");
 
 			Pitch.Models.V0_1_0.AccessTokenResponseModel ret = null;
-			Exception err = null;
+			string err = null;
 			try
 			{
 				System.Net.Http.HttpClientHandler defaultHandler
 						= new HttpClientHandler();
 
 				HmacHandler hmacHandler = new HmacHandler(defaultHandler,
-						id, hashKey);
+						macKeyId, hashKey);
 
 				HttpClient client = new HttpClient(hmacHandler);
 				var requestJson = JsonConvert.SerializeObject(request);
 				client.DefaultRequestHeaders.Add("Accept", Miscellaneous.MEDIA_TYPE);
 
 				var uri = String.Format("{0}/apps/{1}/authorizations",
-						serverUri, id);
+						serverUri, appId);
 
 				var response = await client.PostAsync(uri,
 						new StringContent(requestJson, Encoding.UTF8, Miscellaneous.MEDIA_TYPE));
@@ -46,15 +46,19 @@ namespace Pitch.Requests
 					ret = JsonConvert.DeserializeObject<Pitch.Models.V0_1_0.AccessTokenResponseModel>(responseString);
 					ret.OriginalResponse = JsonConvert.SerializeObject(ret, Formatting.Indented);
 				}
+				else
+				{
+					err = await response.Content.ReadAsStringAsync();
+				}
 			}
 			catch (Exception e)
 			{
 				ret = null;
-				err = e;
+				err = e.Message;
 			}
 			if (err != null)
 			{
-				var msg = new MessageDialog("AccessToken request failed with error: " + err.Message + Environment.NewLine
+				var msg = new MessageDialog("AccessToken request failed with error: " + err + Environment.NewLine
 						+ err.ToString(), "Access Token Error");
 				await msg.ShowAsync();
 			}

@@ -14,8 +14,8 @@ namespace Pitch.Models.V0_1_0
         {
             Code = code;
             TokenType = "mac";
-            TentExpiresAt = HmacUtils.GetTsFromDateTime(DateTime.Now 
-                + TimeSpan.FromMinutes(30));
+						//TentExpiresAt = HmacUtils.GetTsFromDateTime(DateTime.Now 
+						//		+ TimeSpan.FromMinutes(30));
         }
 
         [JsonProperty(PropertyName="code")]
@@ -24,8 +24,8 @@ namespace Pitch.Models.V0_1_0
         [JsonProperty(PropertyName="token_type")]
         public string TokenType { get; set; }
 
-        [JsonProperty(PropertyName="tent_expires_at")]
-        public int TentExpiresAt { get; set; }
+				//[JsonProperty(PropertyName="tent_expires_at")]
+				//public int TentExpiresAt { get; set; }
     }
 
     public class AccessTokenResponseModel
