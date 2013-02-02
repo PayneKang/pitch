@@ -76,6 +76,12 @@
 				<Button x:Name="AccessTokenButton" Content="Get Access Token" Click="AccessTokenButton_Click_1"/>
 				<TextBlock Text="Token response:" />
 				<TextBox Text="{Binding AccessTokenResponse}" IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" />
+				
+				<!-- Write a post! -->
+				<TextBlock FontSize="32" Text="Write a post" />
+				<TextBlock Text="Post:" />
+				<TextBox Text="{Binding PostText,Mode=TwoWay}" />
+				<Button x:Name="PostMessage" Content="Post" Click="PostMessage_Click_1" />
 			</StackPanel>
 		</ScrollViewer>
 		<VisualStateManager.VisualStateGroups>

@@ -31,6 +31,13 @@ namespace SampleApp.ViewModels
 			set { SetProperty(ref uri, value); }
 		}
 
+		private string postText = "First post from the Pitch sample app";
+		public string PostText
+		{
+			get { return postText; }
+			set { SetProperty(ref postText, value); }
+		}
+
 		private Profile profile;
 		public Profile Profile
 		{
@@ -51,9 +58,9 @@ namespace SampleApp.ViewModels
 		private AppRegistrationRequestModel CreateDefaultAppRegistration()
 		{
 			var ret = new AppRegistrationRequestModel();
-			ret.Name = "PitchRT_v0";
+			ret.Name = "Pitch Sample App";
 			ret.Description = "Pitch development app registration.";
-			ret.Url = "http://sleepydaddysoftware.tent.is";
+			ret.Url = "https://github.com/JeroMiya/pitch";
 			ret.Icon = "https://twimg0-a.akamaihd.net/profile_images/116917834/69fe09b1-a01b-4dcf=8da3-f86c9d32081b_normal.JPG";
 			ret.RedirectUri = "https://app.example.com/tent/callback";
 			ret.Scopes["write_profile"] = "Uses an app profile section to describe foos";
@@ -131,7 +138,18 @@ namespace SampleApp.ViewModels
 		public string AccessTokenResponse
 		{
 			get { return accessTokenResponse; }
-			set { SetProperty(ref accessTokenResponse, value); }
+			set 
+			{ 
+				SetProperty(ref accessTokenResponse, value);
+				AccessToken = JsonConvert.DeserializeObject<AccessTokenResponseModel>(value);
+			}
+		}
+
+		private AccessTokenResponseModel accessToken;
+		public AccessTokenResponseModel AccessToken
+		{
+			get { return accessToken; }
+			set { SetProperty(ref accessToken, value); }
 		}
 
 		public async Task DoRequest()
@@ -142,6 +160,9 @@ namespace SampleApp.ViewModels
 
 		public async Task DoAppRegistration()
 		{
+			AppRegistration.Scopes["write_posts"] = "You can post things, for sure.";
+			AppRegistration.Scopes["read_posts"] = "You can read your posts dude.";
+			AppRegistration.Scopes["read_profile"] = "Basic read profile";
 			var response = await Pitch.Requests.AppRegistrationRequest.RegisterNewAppAsync(Server, AppRegistration);
 			AppRegistrationResponse = response;
 			OAuthUri = OAuth.CreateOAuthUri(Server, response);
@@ -156,6 +177,20 @@ namespace SampleApp.ViewModels
 					AppRegistrationResponse.MacKey,
 					new AccessTokenRequestModel(OAuthCode));
 			AccessTokenResponse = response.OriginalResponse;
+			AccessToken = response;
+		}
+
+		public async Task DoPostMessage()
+		{
+			if (AccessToken != null)
+			{
+				var post = new Pitch.Models.V0_1_0.Post();
+				var status = new Pitch.Models.V0_1_0.StandardPostTypes.Status();
+				status.Text = postText;
+				post.StatusContent = status;
+				post.Permissions = new Permissions() { Public = true };
+				await PostRequest.Post(Server, post, AccessToken);
+			}
 		}
 	}
 }

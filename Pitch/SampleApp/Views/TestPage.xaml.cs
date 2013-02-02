@@ -74,5 +74,10 @@ namespace SampleApp.Views
 		{
 			await ((TestPageViewModel)DataContext).DoAccessTokenRequest();
 		}
+
+		private async void PostMessage_Click_1(object sender, RoutedEventArgs e)
+		{
+			await ((TestPageViewModel)DataContext).DoPostMessage();
+		}
 	}
 }

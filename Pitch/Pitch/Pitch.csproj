@@ -108,6 +108,7 @@
     <Compile Include="Models\V0_1_0\AppRegistrationResponseModel.cs" />
     <Compile Include="Models\V0_1_0\BasicProfileInfo.cs" />
     <Compile Include="Models\V0_1_0\CoreProfileInfo.cs" />
+    <Compile Include="Models\V0_1_0\Permissions.cs" />
     <Compile Include="Models\V0_1_0\Post.cs" />
     <Compile Include="Models\V0_1_0\StandardPostTypes\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

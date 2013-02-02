@@ -50,6 +50,12 @@ namespace Pitch.Models.V0_1_0
 					return null;
 				}
 			}
+
+			set
+			{
+				Content = JObject.FromObject(value);
+				Type = PostTypes.TYPE_STATUSv020;
+			}
 		}
 
 		//[JsonProperty(PropertyName="attachments")]
@@ -61,7 +67,7 @@ namespace Pitch.Models.V0_1_0
 		//[JsonProperty(PropertyName="views")]
 		//public JObject Views { get; set; }
 
-		//[JsonProperty(PropertyName="permissions")]
-		//public JObject Permissions { get; set; }
+		[JsonProperty(PropertyName = "permissions")]
+		public Permissions Permissions { get; set; }
 	}
 }
